@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brand Monitoring Guys | We Stop Brand Impersonation</title>
+    <meta name="description" content="Two engineers who got tired of seeing brands get ripped off. We hunt down impersonators and make them disappear.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23000'/><text x='50' y='68' text-anchor='middle' font-size='50' fill='white' font-weight='bold'>B</text></svg>">
+</head>
+<body>
+    <!-- Grain Overlay -->
+    <div class="grain"></div>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progress-bar"></div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor">
+        <div class="cursor-dot"></div>
+        <div class="cursor-circle"></div>
+        <span class="cursor-text"></span>
+    </div>
+
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-inner">
+            <div class="loader-text">
+                <span class="loader-word">Brand</span>
+                <span class="loader-word">Monitoring</span>
+                <span class="loader-word">Guys</span>
+            </div>
+            <div class="loader-line"></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="header" id="header">
+        <nav class="nav">
+            <a href="/" class="nav-logo" data-magnetic>
+                <span class="logo-text">BMG</span>
+            </a>
+
+            <div class="nav-center">
+                <a href="#work" class="nav-link" data-magnetic><span>Work</span></a>
+                <a href="#about" class="nav-link" data-magnetic><span>About</span></a>
+                <a href="#process" class="nav-link" data-magnetic><span>Process</span></a>
+            </div>
+
+            <a href="#contact" class="nav-cta" data-magnetic>
+                <span class="btn-text">Let's Talk</span>
+                <span class="btn-arrow">→</span>
+            </a>
+
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <nav class="mobile-nav">
+            <a href="#work" class="mobile-link">Work</a>
+            <a href="#about" class="mobile-link">About</a>
+            <a href="#process" class="mobile-link">Process</a>
+            <a href="#contact" class="mobile-link">Contact</a>
+        </nav>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <!-- WebGL Canvas for particle effect -->
+            <canvas id="hero-canvas"></canvas>
+
+            <div class="hero-bg">
+                <div class="hero-gradient"></div>
+                <div class="hero-shapes">
+                    <div class="shape shape-1"></div>
+                    <div class="shape shape-2"></div>
+                    <div class="shape shape-3"></div>
+                </div>
+            </div>
+
+            <div class="hero-content">
+                <div class="hero-eyebrow">
+                    <span class="eyebrow-line"></span>
+                    <span class="eyebrow-text">Brand Protection Service</span>
+                </div>
+
+                <h1 class="hero-title">
+                    <span class="title-line" data-splitting>Someone's pretending</span>
+                    <span class="title-line" data-splitting>to be your brand.</span>
+                    <span class="title-line title-accent" data-splitting>We make them stop.</span>
+                </h1>
+
+                <p class="hero-subtitle" data-reveal>
+                    Two engineers who got tired of seeing good brands get ripped off.
+                    We hunt down impersonators, fake accounts, and phishing sites — then we make them disappear.
+                </p>
+
+                <div class="hero-cta">
+                    <a href="#contact" class="btn btn-primary" data-magnetic>
+                        <span class="btn-text">Get Protected</span>
+                        <span class="btn-bg"></span>
+                    </a>
+                    <a href="#work" class="btn btn-ghost" data-magnetic>
+                        <span class="btn-text">See Our Work</span>
+                    </a>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat" data-reveal>
+                        <span class="stat-number" data-count="2847">0</span>
+                        <span class="stat-label">Threats Eliminated</span>
+                    </div>
+                    <div class="stat" data-reveal>
+                        <span class="stat-number">&lt;24h</span>
+                        <span class="stat-label">Average Takedown</span>
+                    </div>
+                    <div class="stat" data-reveal>
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Success Rate</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-scroll">
+                <span class="scroll-text">Scroll to explore</span>
+                <div class="scroll-line"></div>
+            </div>
+
+            <!-- Floating Elements -->
+            <div class="floating-elements">
+                <div class="floating-card card-1" data-speed="0.5">
+                    <div class="card-icon">⚠️</div>
+                    <div class="card-text">Fake domain detected</div>
+                </div>
+                <div class="floating-card card-2" data-speed="0.3">
+                    <div class="card-icon">✓</div>
+                    <div class="card-text">Takedown complete</div>
+                </div>
+                <div class="floating-card card-3" data-speed="0.7">
+                    <div class="card-icon">🛡️</div>
+                    <div class="card-text">Brand protected</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Marquee Section -->
+        <section class="marquee-section">
+            <div class="marquee">
+                <div class="marquee-content">
+                    <span>Phishing Sites</span>
+                    <span class="separator">×</span>
+                    <span>Fake Accounts</span>
+                    <span class="separator">×</span>
+                    <span>Domain Squatters</span>
+                    <span class="separator">×</span>
+                    <span>Impersonation</span>
+                    <span class="separator">×</span>
+                    <span>Scam Ads</span>
+                    <span class="separator">×</span>
+                    <span>Counterfeit Stores</span>
+                    <span class="separator">×</span>
+                    <span>Social Clones</span>
+                    <span class="separator">×</span>
+                    <span>Phishing Sites</span>
+                    <span class="separator">×</span>
+                    <span>Fake Accounts</span>
+                    <span class="separator">×</span>
+                    <span>Domain Squatters</span>
+                    <span class="separator">×</span>
+                    <span>Impersonation</span>
+                    <span class="separator">×</span>
+                    <span>Scam Ads</span>
+                    <span class="separator">×</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem Section - Horizontal Scroll -->
+        <section class="horizontal-section" id="work">
+            <div class="horizontal-wrapper">
+                <div class="horizontal-track">
+                    <!-- Panel 1: The Problem -->
+                    <div class="horizontal-panel panel-intro">
+                        <div class="panel-content">
+                            <span class="panel-number">01</span>
+                            <h2 class="panel-title" data-splitting>The Problem</h2>
+                            <p class="panel-text">Every day, someone is using your brand to scam people. Fake websites. Phishing emails. Social media impersonators. It damages your reputation and costs you customers.</p>
+                        </div>
+                        <div class="panel-visual">
+                            <div class="threat-visualization">
+                                <div class="threat-center">Your Brand</div>
+                                <div class="threat-orbit">
+                                    <div class="threat-item" style="--i: 0">Fake Sites</div>
+                                    <div class="threat-item" style="--i: 1">Phishing</div>
+                                    <div class="threat-item" style="--i: 2">Clones</div>
+                                    <div class="threat-item" style="--i: 3">Scam Ads</div>
+                                    <div class="threat-item" style="--i: 4">Squatters</div>
+                                    <div class="threat-item" style="--i: 5">Fakes</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Panel 2: Detection -->
+                    <div class="horizontal-panel panel-detection">
+                        <div class="panel-content">
+                            <span class="panel-number">02</span>
+                            <h2 class="panel-title" data-splitting>We Find Them</h2>
+                            <p class="panel-text">Our systems scan continuously. Domain registrations. Social platforms. Ad networks. Dark web. We find threats before they find your customers.</p>
+                        </div>
+                        <div class="panel-visual">
+                            <div class="scanner-visual">
+                                <div class="scanner-ring ring-1"></div>
+                                <div class="scanner-ring ring-2"></div>
+                                <div class="scanner-ring ring-3"></div>
+                                <div class="scanner-center">
+                                    <span class="scanner-icon">◉</span>
+                                </div>
+                                <div class="scanner-dots">
+                                    <span class="scan-dot" style="--x: 20%; --y: 30%"></span>
+                                    <span class="scan-dot" style="--x: 70%; --y: 20%"></span>
+                                    <span class="scan-dot" style="--x: 80%; --y: 60%"></span>
+                                    <span class="scan-dot" style="--x: 30%; --y: 70%"></span>
+                                    <span class="scan-dot" style="--x: 60%; --y: 80%"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Panel 3: Elimination -->
+                    <div class="horizontal-panel panel-elimination">
+                        <div class="panel-content">
+                            <span class="panel-number">03</span>
+                            <h2 class="panel-title" data-splitting>We End Them</h2>
+                            <p class="panel-text">No templates. No automated forms. We personally pursue every takedown. Domain registrars, hosting providers, social platforms — we know exactly who to contact and what to say.</p>
+                        </div>
+                        <div class="panel-visual">
+                            <div class="terminal-window">
+                                <div class="terminal-header">
+                                    <span class="terminal-dot"></span>
+                                    <span class="terminal-dot"></span>
+                                    <span class="terminal-dot"></span>
+                                    <span class="terminal-title">bmg-takedown</span>
+                                </div>
+                                <div class="terminal-body">
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command" data-type="bmg scan --domain fake-yoursite.com"></span>
+                                    </div>
+                                    <div class="terminal-output">
+                                        <span class="output-line">→ Threat confirmed: Phishing site</span>
+                                        <span class="output-line">→ Registrar: Namecheap</span>
+                                        <span class="output-line">→ Host: DigitalOcean</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command" data-type="bmg takedown --force"></span>
+                                    </div>
+                                    <div class="terminal-output success">
+                                        <span class="output-line">✓ Takedown notice sent</span>
+                                        <span class="output-line">✓ Domain suspended</span>
+                                        <span class="output-line">✓ Threat eliminated</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Panel 4: Results -->
+                    <div class="horizontal-panel panel-results">
+                        <div class="panel-content">
+                            <span class="panel-number">04</span>
+                            <h2 class="panel-title" data-splitting>You're Protected</h2>
+                            <p class="panel-text">Weekly reports. Real-time alerts. Complete transparency. You see everything we find and everything we do about it.</p>
+                        </div>
+                        <div class="panel-visual">
+                            <div class="results-grid">
+                                <div class="result-card">
+                                    <span class="result-number">2,847</span>
+                                    <span class="result-label">Threats Removed</span>
+                                </div>
+                                <div class="result-card">
+                                    <span class="result-number">$4.2M</span>
+                                    <span class="result-label">Fraud Prevented</span>
+                                </div>
+                                <div class="result-card">
+                                    <span class="result-number">100%</span>
+                                    <span class="result-label">Success Rate</span>
+                                </div>
+                                <div class="result-card">
+                                    <span class="result-number">&lt;24h</span>
+                                    <span class="result-label">Avg Takedown</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Horizontal Progress -->
+            <div class="horizontal-progress">
+                <div class="horizontal-progress-bar"></div>
+            </div>
+        </section>
+
+        <!-- About Section - The Founders -->
+        <section class="about" id="about">
+            <div class="about-bg"></div>
+
+            <div class="about-content">
+                <div class="about-header">
+                    <span class="section-tag">About Us</span>
+                    <h2 class="about-title" data-splitting>
+                        Two engineers who decided<br>
+                        <span class="title-accent">enough was enough.</span>
+                    </h2>
+                </div>
+
+                <div class="about-story">
+                    <p class="story-text story-large" data-reveal>
+                        We spent years building products. Then we watched helplessly as scammers copied them, stole customers, and damaged reputations we'd spent years building.
+                    </p>
+                    <p class="story-text" data-reveal>
+                        So we learned how to fight back. We learned the systems, the processes, the people to contact. We got good at it. Really good.
+                    </p>
+                    <p class="story-text" data-reveal>
+                        Now we do it for others. No enterprise sales process. No lengthy contracts. Just two people who know how to make brand impersonators disappear.
+                    </p>
+                </div>
+
+                <div class="founders">
+                    <div class="founder" data-reveal>
+                        <div class="founder-image">
+                            <div class="founder-placeholder">
+                                <span>R</span>
+                            </div>
+                        </div>
+                        <div class="founder-info">
+                            <h3 class="founder-name">Ryan</h3>
+                            <p class="founder-role">Co-founder & Engineer</p>
+                            <p class="founder-bio">10+ years building products. Now building protection.</p>
+                        </div>
+                    </div>
+                    <div class="founder" data-reveal>
+                        <div class="founder-image">
+                            <div class="founder-placeholder">
+                                <span>M</span>
+                            </div>
+                        </div>
+                        <div class="founder-info">
+                            <h3 class="founder-name">Mike</h3>
+                            <p class="founder-role">Co-founder & Engineer</p>
+                            <p class="founder-bio">Former security researcher. Knows where they hide.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section class="process" id="process">
+            <div class="process-content">
+                <div class="process-header">
+                    <span class="section-tag">How It Works</span>
+                    <h2 class="process-title" data-splitting>
+                        Simple. Direct.<br>
+                        <span class="title-accent">Effective.</span>
+                    </h2>
+                </div>
+
+                <div class="process-steps">
+                    <div class="process-step" data-reveal>
+                        <div class="step-number">01</div>
+                        <div class="step-content">
+                            <h3 class="step-title">You tell us your brand</h3>
+                            <p class="step-text">Domain names, social handles, key executives. Everything that could be impersonated.</p>
+                        </div>
+                    </div>
+
+                    <div class="process-step" data-reveal>
+                        <div class="step-number">02</div>
+                        <div class="step-content">
+                            <h3 class="step-title">We start hunting</h3>
+                            <p class="step-text">24/7 monitoring across domains, social media, ad networks, and dark web forums.</p>
+                        </div>
+                    </div>
+
+                    <div class="process-step" data-reveal>
+                        <div class="step-number">03</div>
+                        <div class="step-content">
+                            <h3 class="step-title">We take them down</h3>
+                            <p class="step-text">Personal outreach to registrars, hosts, and platforms. We don't stop until it's gone.</p>
+                        </div>
+                    </div>
+
+                    <div class="process-step" data-reveal>
+                        <div class="step-number">04</div>
+                        <div class="step-content">
+                            <h3 class="step-title">You stay protected</h3>
+                            <p class="step-text">Weekly reports, real-time alerts, and ongoing monitoring. We're always watching.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonial Section -->
+        <section class="testimonial">
+            <div class="testimonial-content">
+                <div class="quote-mark">"</div>
+                <blockquote class="testimonial-quote" data-splitting>
+                    We had 23 fake sites stealing our customers. Ryan and Mike took them all down in a week. No one else even came close.
+                </blockquote>
+                <div class="testimonial-author">
+                    <span class="author-name">Sarah Chen</span>
+                    <span class="author-role">CEO, Fintech Startup</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="pricing">
+            <div class="pricing-content">
+                <div class="pricing-header">
+                    <span class="section-tag">Pricing</span>
+                    <h2 class="pricing-title" data-splitting>
+                        No enterprise sales.<br>
+                        <span class="title-accent">Just protection.</span>
+                    </h2>
+                </div>
+
+                <div class="pricing-cards">
+                    <div class="pricing-card" data-reveal data-tilt>
+                        <div class="card-header">
+                            <h3 class="card-title">Monthly</h3>
+                            <div class="card-price">
+                                <span class="price-amount">$2,500</span>
+                                <span class="price-period">/month</span>
+                            </div>
+                        </div>
+                        <ul class="card-features">
+                            <li>24/7 brand monitoring</li>
+                            <li>Unlimited takedowns</li>
+                            <li>Weekly reports</li>
+                            <li>Real-time alerts</li>
+                            <li>Direct Slack/email access</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-outline" data-magnetic>
+                            <span class="btn-text">Get Started</span>
+                        </a>
+                    </div>
+
+                    <div class="pricing-card featured" data-reveal data-tilt>
+                        <div class="card-badge">Most Popular</div>
+                        <div class="card-header">
+                            <h3 class="card-title">Annual</h3>
+                            <div class="card-price">
+                                <span class="price-amount">$25,000</span>
+                                <span class="price-period">/year</span>
+                            </div>
+                            <span class="price-save">Save $5,000</span>
+                        </div>
+                        <ul class="card-features">
+                            <li>Everything in Monthly</li>
+                            <li>Priority response time</li>
+                            <li>Quarterly strategy calls</li>
+                            <li>Executive protection</li>
+                            <li>Dark web monitoring</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary" data-magnetic>
+                            <span class="btn-text">Get Started</span>
+                            <span class="btn-bg"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact" id="contact">
+            <div class="contact-content">
+                <div class="contact-header">
+                    <h2 class="contact-title" data-splitting>
+                        Let's protect<br>
+                        <span class="title-accent">your brand.</span>
+                    </h2>
+                    <p class="contact-subtitle">Tell us what you're dealing with. We'll tell you how we can help.</p>
+                </div>
+
+                <form class="contact-form" id="contact-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                            <span class="input-line"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                            <span class="input-line"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company</label>
+                        <input type="text" id="company" name="company">
+                        <span class="input-line"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">What's happening?</label>
+                        <textarea id="message" name="message" rows="4"></textarea>
+                        <span class="input-line"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-large" data-magnetic>
+                        <span class="btn-text">Send Message</span>
+                        <span class="btn-bg"></span>
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <span class="footer-logo">BMG</span>
+                    <p class="footer-tagline">Two engineers protecting your brand.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="mailto:hello@brandmonitoringguys.com">hello@brandmonitoringguys.com</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2026 Brand Monitoring Guys</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Twitter">X</a>
+                    <a href="#" aria-label="LinkedIn">Li</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/splitting@1.0.6/dist/splitting.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
