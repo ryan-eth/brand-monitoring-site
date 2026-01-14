@@ -307,6 +307,73 @@ input, textarea {
     transform: translateX(2px);
 }
 
+/* Navigation Dropdown */
+.nav-dropdown {
+    position: relative;
+}
+
+.nav-dropdown-trigger {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0.5rem 0;
+    background: transparent;
+    border: none;
+    font-family: inherit;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.nav-dropdown-trigger:hover {
+    color: var(--color-text);
+}
+
+.dropdown-arrow {
+    transition: transform 0.3s ease;
+}
+
+.nav-dropdown.open .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.nav-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 180px;
+    padding: 8px 0;
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.2s ease;
+    z-index: 100;
+}
+
+.nav-dropdown.open .nav-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-item {
+    display: block;
+    padding: 10px 16px;
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+    color: var(--color-text);
+    background: rgba(255, 255, 255, 0.03);
+}
+
 .nav-toggle {
     display: none;
     flex-direction: column;
@@ -656,11 +723,116 @@ input, textarea {
 
 
 /* ============================================
-   Horizontal Scroll Section
+   Scene Setter - Full Viewport Image
+   ============================================ */
+.scene-setter {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-bg);
+    overflow: hidden;
+}
+
+.scene-image-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    padding: 0 var(--container-padding);
+}
+
+.scene-image {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+    will-change: transform, opacity;
+}
+
+/* ============================================
+   Story Section - Narrative Cards
+   ============================================ */
+.story-section {
+    position: relative;
+    background: var(--color-bg);
+    padding: var(--space-4xl) 0;
+}
+
+.story-cards {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4xl);
+}
+
+.story-card {
+    text-align: center;
+}
+
+.story-number {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-accent);
+    margin-bottom: var(--space-md);
+    letter-spacing: 0.1em;
+}
+
+.story-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--color-text);
+    margin-bottom: var(--space-md);
+}
+
+.story-text {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* First card - slightly different styling */
+.story-card:first-child .story-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+@media (max-width: 768px) {
+    .scene-setter {
+        height: 70vh;
+        min-height: 400px;
+    }
+
+    .scene-image {
+        border-radius: 12px;
+    }
+
+    .story-section {
+        padding: var(--space-3xl) 0;
+    }
+
+    .story-cards {
+        gap: var(--space-3xl);
+    }
+
+    .story-text {
+        font-size: 1rem;
+    }
+}
+
+/* ============================================
+   Horizontal Scroll Section (Legacy)
    ============================================ */
 .horizontal-section {
     position: relative;
     background: var(--color-bg);
+    display: none; /* Hidden - using vertical story section instead */
 }
 
 .horizontal-wrapper {

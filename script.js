@@ -170,6 +170,31 @@ function initNavigation() {
     const navToggle = document.getElementById('nav-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
 
+    // Resources dropdown
+    const dropdown = document.querySelector('.nav-dropdown');
+    const dropdownTrigger = document.getElementById('resources-trigger');
+
+    if (dropdownTrigger && dropdown) {
+        dropdownTrigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdown.classList.toggle('open');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove('open');
+            }
+        });
+
+        // Close dropdown when clicking a link
+        dropdown.querySelectorAll('.dropdown-item').forEach(item => {
+            item.addEventListener('click', () => {
+                dropdown.classList.remove('open');
+            });
+        });
+    }
+
     // Header scroll effect
     ScrollTrigger.create({
         start: 'top -100',
@@ -635,7 +660,23 @@ function initFormHandling() {
 // Reveal Animations
 // ============================================
 function initRevealAnimations() {
-    // No reveal animations - static like microsoft.ai
+    // Scene setter scroll effect - microsoft.ai style
+    const sceneImage = document.querySelector('.scene-image');
+    const sceneSetter = document.querySelector('.scene-setter');
+
+    if (sceneImage && sceneSetter) {
+        gsap.to(sceneImage, {
+            scale: 0.9,
+            opacity: 0,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: sceneSetter,
+                start: 'top top',
+                end: 'bottom top',
+                scrub: true
+            }
+        });
+    }
 }
 
 // ============================================
