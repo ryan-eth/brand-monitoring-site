@@ -13,11 +13,6 @@ let mouseX = 0, mouseY = 0;
 // Initialize
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize Splitting.js for text animations
-    if (typeof Splitting !== 'undefined') {
-        Splitting();
-    }
-
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
     initLoader();
@@ -352,84 +347,67 @@ function initHeroCanvas() {
 // Hero Entrance Animation
 // ============================================
 function animateHeroEntrance() {
-    const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-    // Navigation
+    // Navigation - simple fade
     tl.from('.nav-logo, .nav-link, .nav-cta', {
         opacity: 0,
-        y: -30,
-        duration: 0.8,
-        stagger: 0.1
+        duration: 0.6,
+        stagger: 0.05
     });
 
     // Eyebrow
     tl.from('.hero-eyebrow', {
         opacity: 0,
-        y: 30,
-        duration: 0.8
-    }, '-=0.4');
+        y: 20,
+        duration: 0.6
+    }, '-=0.3');
 
-    // Title with character animation
-    const titleLines = document.querySelectorAll('.title-line');
-    titleLines.forEach((line, i) => {
-        const chars = line.querySelectorAll('.char');
-        if (chars.length) {
-            tl.from(chars, {
-                opacity: 0,
-                y: 80,
-                rotateX: -90,
-                duration: 1,
-                stagger: 0.02,
-                ease: 'power4.out'
-            }, i === 0 ? '-=0.2' : '-=0.7');
-        } else {
-            tl.from(line, {
-                opacity: 0,
-                y: 60,
-                duration: 1
-            }, i === 0 ? '-=0.2' : '-=0.7');
-        }
-    });
+    // Title lines - simple fade up, line by line
+    tl.from('.title-line', {
+        opacity: 0,
+        y: 40,
+        duration: 0.8,
+        stagger: 0.12
+    }, '-=0.3');
 
     // Subtitle
     tl.from('.hero-subtitle', {
         opacity: 0,
-        y: 30,
-        duration: 0.8
-    }, '-=0.5');
+        y: 20,
+        duration: 0.6
+    }, '-=0.4');
 
     // CTA buttons
     tl.from('.hero-cta .btn', {
         opacity: 0,
-        y: 30,
-        scale: 0.9,
-        duration: 0.8,
-        stagger: 0.15
-    }, '-=0.4');
+        y: 20,
+        duration: 0.6,
+        stagger: 0.1
+    }, '-=0.3');
 
     // Stats
     tl.from('.hero-stats .stat', {
         opacity: 0,
-        y: 30,
-        duration: 0.6,
-        stagger: 0.1
-    }, '-=0.4');
+        y: 20,
+        duration: 0.5,
+        stagger: 0.08
+    }, '-=0.3');
 
-    // Background shapes
+    // Background shapes - subtle fade
     tl.from('.shape', {
         opacity: 0,
-        scale: 0,
-        duration: 1.5,
-        stagger: 0.2,
-        ease: 'elastic.out(1, 0.5)'
-    }, '-=1');
+        scale: 0.8,
+        duration: 1.2,
+        stagger: 0.15,
+        ease: 'power2.out'
+    }, '-=0.8');
 
     // Scroll indicator
     tl.from('.hero-scroll', {
         opacity: 0,
-        y: 20,
-        duration: 0.6
-    }, '-=0.5');
+        duration: 0.5
+    }, '-=0.3');
 }
 
 function initHeroAnimations() {

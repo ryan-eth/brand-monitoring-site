@@ -498,11 +498,6 @@ input, textarea {
 
 .title-line {
     display: block;
-    overflow: hidden;
-}
-
-.title-line .char {
-    display: inline-block;
 }
 
 .title-accent {
