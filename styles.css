@@ -279,27 +279,31 @@ input, textarea {
 .nav-cta {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
+    gap: 0.625rem;
+    padding: 0.625rem 1.25rem;
     background: var(--color-white);
     color: var(--color-bg);
-    font-size: 0.875rem;
-    font-weight: 600;
+    font-size: 0.8125rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
     border-radius: 100px;
-    transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s;
+    border: 1px solid transparent;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .nav-cta:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 40px rgba(255, 255, 255, 0.15);
+    background: transparent;
+    color: var(--color-white);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
-.btn-arrow {
-    transition: transform 0.3s var(--ease-out-expo);
+.nav-cta .btn-arrow {
+    font-size: 0.875rem;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .nav-cta:hover .btn-arrow {
-    transform: translateX(4px);
+    transform: translateX(3px);
 }
 
 .nav-toggle {
@@ -517,70 +521,90 @@ input, textarea {
     margin-bottom: var(--space-3xl);
 }
 
-/* Buttons */
+/* Buttons - Award-winning design */
 .btn {
     position: relative;
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    padding: 0.875rem 1.75rem;
-    font-size: 0.875rem;
-    font-weight: 500;
-    letter-spacing: 0.01em;
+    gap: 0.75rem;
+    padding: 0.875rem 1.5rem;
+    font-size: 0.8125rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
     border-radius: 100px;
-    overflow: hidden;
-    transition: all 0.3s var(--ease-out-expo);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.btn:hover {
-    transform: translateY(-1px);
+.btn-text {
+    position: relative;
 }
 
+.btn-arrow {
+    display: inline-flex;
+    font-size: 1rem;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn:hover .btn-arrow {
+    transform: translateX(4px);
+}
+
+/* Primary button - solid white, inverts on hover */
 .btn-primary {
     background: var(--color-white);
     color: var(--color-bg);
-    border: 1px solid var(--color-white);
+    border: 1px solid transparent;
 }
 
-.btn-primary .btn-bg {
-    display: none;
-}
-
-.btn-primary .btn-text {
-    position: relative;
-    z-index: 1;
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
 }
 
 .btn-primary:hover {
-    background: transparent;
+    background: var(--color-bg);
     color: var(--color-white);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
+/* Ghost button - subtle outline */
 .btn-ghost {
-    color: var(--color-text-secondary);
-    border: 1px solid var(--color-border);
     background: transparent;
+    color: var(--color-text-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .btn-ghost:hover {
-    color: var(--color-text);
-    border-color: var(--color-text-secondary);
+    color: var(--color-white);
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.03);
 }
 
+/* Outline button */
 .btn-outline {
     background: transparent;
     color: var(--color-text-secondary);
-    border: 1px solid var(--color-border);
+    border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .btn-outline:hover {
-    color: var(--color-text);
-    border-color: var(--color-text-secondary);
+    color: var(--color-white);
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.03);
 }
 
+/* Large button variant */
 .btn-large {
-    padding: 1rem 2rem;
-    font-size: 0.9375rem;
+    padding: 1rem 1.75rem;
+    font-size: 0.875rem;
+    gap: 0.875rem;
 }
 
 /* Hero Stats */
