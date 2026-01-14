@@ -690,6 +690,32 @@ input, textarea {
     max-width: 500px;
 }
 
+/* Text-only panels (no visual) */
+.panel-text-only {
+    justify-content: center;
+}
+
+.panel-content-full {
+    max-width: 700px;
+    text-align: center;
+}
+
+.panel-content-full .panel-number {
+    margin-bottom: var(--space-lg);
+}
+
+.panel-title-large {
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.2;
+    margin-bottom: var(--space-lg);
+}
+
+.panel-content-full .panel-text {
+    font-size: 1.125rem;
+    max-width: 540px;
+    margin: 0 auto;
+}
+
 .panel-number {
     display: inline-block;
     font-family: var(--font-mono);
@@ -820,69 +846,74 @@ input, textarea {
 }
 
 /* ============================================
-   Panel 3: Takedown Flow Visual
+   Panel 3: Solution Flow Visual
    ============================================ */
-.takedown-flow {
+.solution-flow {
     display: flex;
     align-items: center;
-    gap: 20px;
-    padding: 32px;
+    gap: 24px;
+    padding: 40px;
     background: var(--color-bg-elevated);
     border: 1px solid var(--color-border);
     border-radius: 16px;
 }
 
-.flow-step {
-    padding: 14px 22px;
-    background: var(--color-bg);
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    text-align: center;
-}
-
-.flow-origin {
-    border-color: var(--color-accent);
-}
-
-.flow-origin .flow-label {
-    color: var(--color-accent);
-    font-weight: 600;
-}
-
-.flow-label {
-    font-size: 0.8125rem;
-    color: var(--color-text-secondary);
-    font-weight: 500;
-}
-
-.flow-arrow {
-    font-size: 1.25rem;
-    color: var(--color-text-muted);
-}
-
-.flow-targets {
+.solution-step {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+    min-width: 120px;
 }
 
-.flow-target {
-    padding: 10px 18px;
+.solution-icon {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    color: var(--color-text-secondary);
+    transition: all 0.3s ease;
 }
 
-.flow-result {
+.solution-step:hover .solution-icon {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+.solution-label {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-text);
+}
+
+.solution-sub {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.solution-arrow {
+    color: var(--color-text-muted);
+    opacity: 0.5;
+}
+
+.solution-result .solution-icon {
     border-color: var(--color-accent);
     background: rgba(0, 255, 136, 0.05);
-}
-
-.flow-result .flow-label {
     color: var(--color-accent);
-    font-weight: 600;
 }
 
-/* ============================================
-   Panel 4: Protection Status Visual
-   ============================================ */
+.solution-result .solution-label {
+    color: var(--color-accent);
+}
+
+/* Legacy panel styles (kept for compatibility) */
 .protection-status {
     display: flex;
     flex-direction: column;
