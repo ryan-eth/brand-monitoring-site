@@ -414,40 +414,7 @@ function initHorizontalScroll() {
         }
     });
 
-    // Animate individual panel elements
-    panels.forEach((panel, i) => {
-        const content = panel.querySelector('.panel-content');
-        const visual = panel.querySelector('.panel-visual');
-        const number = panel.querySelector('.panel-number');
-        const title = panel.querySelector('.panel-title');
-
-        // Stagger reveal for content
-        ScrollTrigger.create({
-            trigger: panel,
-            containerAnimation: horizontalScroll,
-            start: 'left 80%',
-            onEnter: () => {
-                gsap.from([number, title, content?.querySelector('.panel-text')], {
-                    opacity: 0,
-                    y: 40,
-                    duration: 0.8,
-                    stagger: 0.15,
-                    ease: 'power3.out'
-                });
-
-                if (visual) {
-                    gsap.from(visual, {
-                        opacity: 0,
-                        scale: 0.9,
-                        duration: 1,
-                        delay: 0.3,
-                        ease: 'power3.out'
-                    });
-                }
-            },
-            once: true
-        });
-    });
+    // Panel content is visible immediately - no reveal animations
 
     // Threat orbit animation
     gsap.to('.threat-item', {
@@ -505,45 +472,14 @@ function initParallaxEffects() {
 // Terminal Typing Effect
 // ============================================
 function initTerminalTyping() {
+    // Show terminal commands immediately - no scroll-triggered animation
     const commands = document.querySelectorAll('.command[data-type]');
-
-    commands.forEach((command, i) => {
+    commands.forEach(command => {
         const text = command.dataset.type;
-        command.textContent = '';
-
-        ScrollTrigger.create({
-            trigger: command.closest('.terminal-window'),
-            start: 'top 75%',
-            onEnter: () => {
-                setTimeout(() => {
-                    typeText(command, text, 40);
-                }, i * 800 + 500);
-            },
-            once: true
-        });
+        command.textContent = text;
     });
 
-    // Animate output lines
-    const outputLines = document.querySelectorAll('.output-line');
-    outputLines.forEach((line, i) => {
-        const originalText = line.textContent;
-        line.style.opacity = '0';
-
-        ScrollTrigger.create({
-            trigger: line.closest('.terminal-window'),
-            start: 'top 75%',
-            onEnter: () => {
-                setTimeout(() => {
-                    gsap.to(line, {
-                        opacity: 1,
-                        duration: 0.3,
-                        ease: 'power2.out'
-                    });
-                }, i * 150 + 1500);
-            },
-            once: true
-        });
-    });
+    // Output lines are visible by default - no animation needed
 }
 
 function typeText(element, text, speed = 50) {
@@ -565,38 +501,10 @@ function typeText(element, text, speed = 50) {
 // Counter Animations
 // ============================================
 function initCounterAnimations() {
+    // Show final values immediately - no counting animation
     const counters = document.querySelectorAll('[data-count]');
-
     counters.forEach(counter => {
-        const finalValue = counter.dataset.count;
-
-        ScrollTrigger.create({
-            trigger: counter,
-            start: 'top 85%',
-            onEnter: () => animateCounter(counter, finalValue),
-            once: true
-        });
-    });
-
-    // Also animate stat numbers without data-count
-    const statNumbers = document.querySelectorAll('.stat-number:not([data-count])');
-    statNumbers.forEach(stat => {
-        const text = stat.textContent;
-        if (text.match(/\d/)) {
-            ScrollTrigger.create({
-                trigger: stat,
-                start: 'top 85%',
-                onEnter: () => {
-                    gsap.from(stat, {
-                        opacity: 0,
-                        y: 20,
-                        duration: 0.6,
-                        ease: 'power3.out'
-                    });
-                },
-                once: true
-            });
-        }
+        counter.textContent = counter.dataset.count;
     });
 }
 
