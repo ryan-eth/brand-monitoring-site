@@ -179,10 +179,8 @@ input, textarea {
 }
 
 .loader-word:nth-child(1) { animation-delay: 0.1s; }
-.loader-word:nth-child(2) { animation-delay: 0.15s; }
-.loader-word:nth-child(3) { animation-delay: 0.2s; }
-.loader-word:nth-child(4) { animation-delay: 0.25s; }
-.loader-word:nth-child(5) { animation-delay: 0.3s; }
+.loader-word:nth-child(2) { animation-delay: 0.2s; }
+.loader-word:nth-child(3) { animation-delay: 0.3s; }
 
 @keyframes loaderWord {
     to {
@@ -227,11 +225,16 @@ input, textarea {
     justify-content: space-between;
 }
 
+.nav-centered {
+    justify-content: center;
+}
+
 .nav-logo {
     font-family: var(--font-display);
-    font-size: 1.25rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
+    font-size: 1.125rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
 }
 
 .nav-center {
@@ -536,11 +539,13 @@ input, textarea {
     max-width: var(--container-max);
     margin: 0 auto;
     width: 100%;
+    text-align: center;
 }
 
 .hero-eyebrow {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: var(--space-md);
     margin-bottom: var(--space-lg);
 }
@@ -580,11 +585,12 @@ input, textarea {
     font-size: clamp(1rem, 2vw, 1.25rem);
     color: var(--color-text-secondary);
     max-width: 600px;
-    margin-bottom: var(--space-xl);
+    margin: 0 auto var(--space-xl);
 }
 
 .hero-cta {
     display: flex;
+    justify-content: center;
     gap: var(--space-md);
     margin-bottom: var(--space-3xl);
 }
@@ -751,78 +757,291 @@ input, textarea {
 }
 
 /* ============================================
-   Story Section - Narrative Cards
+   Cinematic Story Scroll - Awwwards Level
    ============================================ */
-.story-section {
+.story-scroll {
     position: relative;
     background: var(--color-bg);
-    padding: var(--space-4xl) 0;
 }
 
-.story-cards {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 var(--container-padding);
+/* Progress Indicator - Fixed on left side */
+.story-progress {
+    position: fixed;
+    left: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
     display: flex;
     flex-direction: column;
-    gap: var(--space-4xl);
+    align-items: center;
+    gap: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
 }
 
-.story-card {
+.story-progress.visible {
+    opacity: 1;
+}
+
+.story-progress-track {
+    width: 2px;
+    height: 120px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+}
+
+.story-progress-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background: var(--color-accent);
+    border-radius: 2px;
+    transition: height 0.1s linear;
+}
+
+.story-progress-chapters {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.chapter-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.chapter-dot.active {
+    background: var(--color-accent);
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+}
+
+/* Story Chapter - Full Viewport Panels */
+.story-chapter {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-4xl) var(--container-padding);
+    overflow: hidden;
+}
+
+/* Chapter Background */
+.chapter-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.chapter-gradient {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.story-chapter.active .chapter-gradient {
+    opacity: 1;
+}
+
+.chapter-gradient-1 {
+    background: radial-gradient(ellipse 80% 60% at 30% 40%, rgba(255, 68, 68, 0.08), transparent);
+}
+
+.chapter-gradient-2 {
+    background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(255, 170, 0, 0.06), transparent);
+}
+
+.chapter-gradient-3 {
+    background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(0, 255, 136, 0.1), transparent);
+}
+
+/* Large Background Chapter Number */
+.chapter-number-bg {
+    position: absolute;
+    right: -5%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--font-display);
+    font-size: clamp(20rem, 40vw, 50rem);
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.02);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.story-chapter.active .chapter-number-bg {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+}
+
+/* Chapter Content */
+.chapter-content {
+    position: relative;
+    z-index: 10;
+    max-width: 900px;
     text-align: center;
 }
 
-.story-number {
+.chapter-label {
     display: inline-block;
     font-family: var(--font-mono);
     font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
     color: var(--color-accent);
-    margin-bottom: var(--space-md);
-    letter-spacing: 0.1em;
+    margin-bottom: var(--space-lg);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s var(--ease-out-expo);
 }
 
-.story-title {
+.story-chapter.active .chapter-label {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Chapter Headline - Word by Word Reveal */
+.chapter-headline {
     font-family: var(--font-display);
-    font-size: clamp(1.75rem, 4vw, 2.5rem);
-    font-weight: 400;
-    line-height: 1.2;
-    color: var(--color-text);
-    margin-bottom: var(--space-md);
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-xl);
 }
 
-.story-text {
-    font-size: 1.125rem;
-    line-height: 1.7;
+.chapter-headline .word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.6s var(--ease-out-expo);
+}
+
+.story-chapter.active .chapter-headline .word {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger word animations */
+.story-chapter.active .chapter-headline .word:nth-child(1) { transition-delay: 0.05s; }
+.story-chapter.active .chapter-headline .word:nth-child(2) { transition-delay: 0.1s; }
+.story-chapter.active .chapter-headline .word:nth-child(3) { transition-delay: 0.15s; }
+.story-chapter.active .chapter-headline .word:nth-child(4) { transition-delay: 0.2s; }
+.story-chapter.active .chapter-headline .word:nth-child(5) { transition-delay: 0.25s; }
+.story-chapter.active .chapter-headline .word:nth-child(6) { transition-delay: 0.3s; }
+.story-chapter.active .chapter-headline .word:nth-child(7) { transition-delay: 0.35s; }
+.story-chapter.active .chapter-headline .word:nth-child(8) { transition-delay: 0.4s; }
+.story-chapter.active .chapter-headline .word:nth-child(9) { transition-delay: 0.45s; }
+.story-chapter.active .chapter-headline .word:nth-child(10) { transition-delay: 0.5s; }
+
+.chapter-headline .word.accent {
+    color: var(--color-accent);
+}
+
+/* Chapter Text */
+.chapter-text {
+    font-size: clamp(1rem, 2vw, 1.25rem);
     color: var(--color-text-secondary);
+    line-height: 1.7;
     max-width: 600px;
     margin: 0 auto;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s var(--ease-out-expo) 0.5s;
 }
 
-/* First card - slightly different styling */
-.story-card:first-child .story-title {
-    font-size: clamp(1.5rem, 3vw, 2rem);
+.story-chapter.active .chapter-text {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Chapter Visual (for images) */
+.chapter-visual {
+    position: absolute;
+    right: 5%;
+    bottom: 10%;
+    width: 35%;
+    max-width: 400px;
+    z-index: 5;
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+    transition: all 0.8s var(--ease-out-expo) 0.3s;
+}
+
+.story-chapter.active .chapter-visual {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.chapter-image {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+    .story-progress {
+        left: 20px;
+    }
+
+    .chapter-number-bg {
+        font-size: clamp(12rem, 30vw, 20rem);
+        right: -10%;
+    }
+
+    .chapter-visual {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        width: 80%;
+        max-width: 350px;
+        margin-top: var(--space-xl);
+    }
+
+    .chapter-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 @media (max-width: 768px) {
-    .scene-setter {
-        height: 70vh;
-        min-height: 400px;
+    .story-progress {
+        display: none;
     }
 
-    .scene-image {
-        border-radius: 12px;
+    .chapter-number-bg {
+        font-size: 15rem;
+        opacity: 0.02;
     }
 
-    .story-section {
-        padding: var(--space-3xl) 0;
+    .story-chapter {
+        min-height: 80vh;
+        padding: var(--space-3xl) var(--container-padding);
     }
 
-    .story-cards {
-        gap: var(--space-3xl);
-    }
-
-    .story-text {
-        font-size: 1rem;
+    .chapter-headline {
+        font-size: clamp(2rem, 8vw, 3rem);
     }
 }
 
@@ -1728,8 +1947,8 @@ input, textarea {
 
 .footer-logo {
     font-family: var(--font-display);
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: 1.25rem;
+    font-weight: 500;
     display: block;
     margin-bottom: var(--space-sm);
 }

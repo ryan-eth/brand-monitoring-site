@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initTiltCards();
     initFormHandling();
     initRevealAnimations();
+    initStoryScroll();
 });
 
 // ============================================
@@ -677,6 +678,115 @@ function initRevealAnimations() {
             }
         });
     }
+}
+
+// ============================================
+// Cinematic Story Scroll
+// ============================================
+function initStoryScroll() {
+    const storyScroll = document.querySelector('.story-scroll');
+    const chapters = document.querySelectorAll('.story-chapter');
+    const progressIndicator = document.querySelector('.story-progress');
+    const progressFill = document.querySelector('.story-progress-fill');
+    const chapterDots = document.querySelectorAll('.chapter-dot');
+
+    if (!storyScroll || chapters.length === 0) return;
+
+    // Show/hide progress indicator based on story section visibility
+    ScrollTrigger.create({
+        trigger: storyScroll,
+        start: 'top 80%',
+        end: 'bottom 20%',
+        onEnter: () => progressIndicator?.classList.add('visible'),
+        onLeave: () => progressIndicator?.classList.remove('visible'),
+        onEnterBack: () => progressIndicator?.classList.add('visible'),
+        onLeaveBack: () => progressIndicator?.classList.remove('visible')
+    });
+
+    // Update progress fill based on scroll through story section
+    ScrollTrigger.create({
+        trigger: storyScroll,
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: true,
+        onUpdate: (self) => {
+            if (progressFill) {
+                gsap.set(progressFill, { height: `${self.progress * 100}%` });
+            }
+        }
+    });
+
+    // Create scroll triggers for each chapter
+    chapters.forEach((chapter, index) => {
+        ScrollTrigger.create({
+            trigger: chapter,
+            start: 'top 60%',
+            end: 'bottom 40%',
+            onEnter: () => activateChapter(chapter, index),
+            onEnterBack: () => activateChapter(chapter, index),
+            onLeave: () => {
+                if (index === chapters.length - 1) {
+                    // Keep last chapter active when scrolling past
+                } else {
+                    chapter.classList.remove('active');
+                }
+            },
+            onLeaveBack: () => {
+                if (index === 0) {
+                    chapter.classList.remove('active');
+                }
+            }
+        });
+    });
+
+    function activateChapter(chapter, index) {
+        // Deactivate all chapters
+        chapters.forEach(ch => ch.classList.remove('active'));
+
+        // Activate current chapter
+        chapter.classList.add('active');
+
+        // Update chapter dots
+        chapterDots.forEach((dot, i) => {
+            if (i <= index) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+    }
+
+    // Parallax effect on chapter number background
+    chapters.forEach(chapter => {
+        const numberBg = chapter.querySelector('.chapter-number-bg');
+        if (numberBg) {
+            gsap.to(numberBg, {
+                y: -100,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: chapter,
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: 1
+                }
+            });
+        }
+    });
+
+    // Optional: Add subtle parallax to chapter visual
+    const chapterVisuals = document.querySelectorAll('.chapter-visual');
+    chapterVisuals.forEach(visual => {
+        gsap.to(visual, {
+            y: -50,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: visual.closest('.story-chapter'),
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: 1
+            }
+        });
+    });
 }
 
 // ============================================

@@ -52,9 +52,7 @@
             <div class="loader-text">
                 <span class="loader-word">Work</span>
                 <span class="loader-word">with</span>
-                <span class="loader-word">Brand</span>
-                <span class="loader-word">Monitoring</span>
-                <span class="loader-word">Guys</span>
+                <span class="loader-word">BMG</span>
             </div>
             <div class="loader-line"></div>
         </div>
@@ -62,25 +60,10 @@
 
     <!-- Navigation -->
     <header class="header" id="header">
-        <nav class="nav">
+        <nav class="nav nav-centered">
             <a href="/" class="nav-logo" data-magnetic>
-                <span class="logo-text">BMG</span>
+                <span class="logo-text">Brand Monitoring Guys</span>
             </a>
-
-            <div class="nav-dropdown">
-                <button class="nav-dropdown-trigger" id="resources-trigger">
-                    <span>Resources</span>
-                    <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none">
-                        <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
-                <div class="nav-dropdown-menu" id="resources-menu">
-                    <a href="#" class="dropdown-item">Brand Monitoring SOP</a>
-                    <a href="#" class="dropdown-item">Takedown Request Templates</a>
-                    <a href="#" class="dropdown-item">Platform Reporting Guide</a>
-                    <a href="#" class="dropdown-item">Threat Assessment Checklist</a>
-                </div>
-            </div>
         </nav>
     </header>
 
@@ -144,33 +127,94 @@
 
         </section>
 
-        <!-- Scene Setter - Full Viewport Image -->
-        <section class="scene-setter" id="work">
-            <div class="scene-image-wrapper">
-                <img src="assets/images/problem-visual.png" alt="Search results showing fake brand impersonators appearing alongside real brand" class="scene-image">
+        <!-- Cinematic Story Scroll -->
+        <section class="story-scroll" id="work">
+            <!-- Progress Indicator -->
+            <div class="story-progress">
+                <div class="story-progress-track">
+                    <div class="story-progress-fill"></div>
+                </div>
+                <div class="story-progress-chapters">
+                    <span class="chapter-dot active" data-chapter="1"></span>
+                    <span class="chapter-dot" data-chapter="2"></span>
+                    <span class="chapter-dot" data-chapter="3"></span>
+                </div>
             </div>
-        </section>
 
-        <!-- Story Section - Narrative Cards -->
-        <section class="story-section">
-            <div class="story-cards">
-                <article class="story-card">
-                    <span class="story-number">01</span>
-                    <h2 class="story-title">The Problem</h2>
-                    <p class="story-text">A mistyped URL. A paid ad. A fake profile. Your customers try to find you—and someone else answers.</p>
-                </article>
+            <!-- Chapter 1: The Problem -->
+            <div class="story-chapter" data-chapter="1">
+                <div class="chapter-bg">
+                    <div class="chapter-gradient chapter-gradient-1"></div>
+                </div>
+                <div class="chapter-number-bg">01</div>
+                <div class="chapter-content">
+                    <span class="chapter-label">The Problem</span>
+                    <h2 class="chapter-headline">
+                        <span class="word">Your</span>
+                        <span class="word">customers</span>
+                        <span class="word">try</span>
+                        <span class="word">to</span>
+                        <span class="word">find</span>
+                        <span class="word">you—</span>
+                        <br>
+                        <span class="word accent">someone</span>
+                        <span class="word accent">else</span>
+                        <span class="word accent">answers.</span>
+                    </h2>
+                    <p class="chapter-text">
+                        A mistyped URL. A paid ad. A fake profile. Every day, scammers intercept your customers before they reach you.
+                    </p>
+                </div>
+                <div class="chapter-visual">
+                    <img src="assets/images/problem-visual.png" alt="Fake brand impersonators in search results" class="chapter-image">
+                </div>
+            </div>
 
-                <article class="story-card">
-                    <span class="story-number">02</span>
-                    <h2 class="story-title">Brand impersonation isn't a one-off. It comes in bursts.</h2>
-                    <p class="story-text">From tracking fake domains and fraudulent ads, to filing takedowns and chasing registrars—there's always something that needs your attention, taking time away from building your product.</p>
-                </article>
+            <!-- Chapter 2: The Burden -->
+            <div class="story-chapter" data-chapter="2">
+                <div class="chapter-bg">
+                    <div class="chapter-gradient chapter-gradient-2"></div>
+                </div>
+                <div class="chapter-number-bg">02</div>
+                <div class="chapter-content">
+                    <span class="chapter-label">The Burden</span>
+                    <h2 class="chapter-headline">
+                        <span class="word">It</span>
+                        <span class="word">never</span>
+                        <span class="word">stops.</span>
+                        <br>
+                        <span class="word accent">Neither</span>
+                        <span class="word accent">should</span>
+                        <span class="word accent">protection.</span>
+                    </h2>
+                    <p class="chapter-text">
+                        Tracking fake domains. Filing takedowns. Chasing registrars. There's always something stealing your focus from what matters—building your product.
+                    </p>
+                </div>
+            </div>
 
-                <article class="story-card">
-                    <span class="story-number">03</span>
-                    <h2 class="story-title">Hand it to us. We handle the rest.</h2>
-                    <p class="story-text">We detect threats before your customers find them. We take them down before they spread. You get a monthly report of everything we stopped. That's it.</p>
-                </article>
+            <!-- Chapter 3: The Solution -->
+            <div class="story-chapter" data-chapter="3">
+                <div class="chapter-bg">
+                    <div class="chapter-gradient chapter-gradient-3"></div>
+                </div>
+                <div class="chapter-number-bg">03</div>
+                <div class="chapter-content">
+                    <span class="chapter-label">The Solution</span>
+                    <h2 class="chapter-headline">
+                        <span class="word">Hand</span>
+                        <span class="word">it</span>
+                        <span class="word">to</span>
+                        <span class="word">us.</span>
+                        <br>
+                        <span class="word accent">We</span>
+                        <span class="word accent">handle</span>
+                        <span class="word accent">everything.</span>
+                    </h2>
+                    <p class="chapter-text">
+                        We detect threats before your customers find them. We take them down before they spread. You get a monthly report. That's it.
+                    </p>
+                </div>
             </div>
         </section>
 
@@ -372,7 +416,7 @@
         <div class="footer-content">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <span class="footer-logo">BMG</span>
+                    <span class="footer-logo">Brand Monitoring Guys</span>
                     <p class="footer-tagline">A specialized team that personally hunts down every threat to your brand.</p>
                     <a href="mailto:hello@brandmonitoringguys.com" class="footer-email">hello@brandmonitoringguys.com</a>
                 </div>
