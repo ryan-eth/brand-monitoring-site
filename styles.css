@@ -764,6 +764,62 @@ input, textarea {
 }
 
 /* ============================================
+   Panel 2: Burden Cycle Visual
+   ============================================ */
+.burden-cycle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 24px;
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    max-width: 280px;
+}
+
+.burden-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    width: 100%;
+    transition: border-color 0.2s ease;
+}
+
+.burden-item:hover {
+    border-color: var(--color-border-hover);
+}
+
+.burden-item.active {
+    border-color: var(--color-accent);
+    background: rgba(0, 255, 136, 0.05);
+}
+
+.burden-icon {
+    font-size: 1rem;
+}
+
+.burden-text {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+}
+
+.burden-item.active .burden-text {
+    color: var(--color-accent);
+}
+
+.burden-arrow {
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+    opacity: 0.5;
+}
+
+/* ============================================
    Panel 3: Takedown Flow Visual
    ============================================ */
 .takedown-flow {
@@ -942,23 +998,19 @@ input, textarea {
 }
 
 .about-title {
-    margin-bottom: var(--space-md);
+    margin-bottom: var(--space-3xl);
 }
 
 .about-story {
     max-width: 800px;
-    margin-bottom: var(--space-xl);
+    margin-bottom: var(--space-4xl);
 }
 
 .story-text {
     font-size: 1.125rem;
     color: var(--color-text-secondary);
     line-height: 1.8;
-    margin-bottom: var(--space-md);
-}
-
-.story-text:last-child {
-    margin-bottom: 0;
+    margin-bottom: var(--space-lg);
 }
 
 .story-large {
