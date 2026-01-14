@@ -7,9 +7,7 @@
 // Global Variables
 // ============================================
 let lenis;
-let cursor;
 let mouseX = 0, mouseY = 0;
-let cursorX = 0, cursorY = 0;
 
 // ============================================
 // Initialize
@@ -24,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initLoader();
     initLenis();
-    initCursor();
     initProgressBar();
     initNavigation();
     initHeroCanvas();
@@ -146,37 +143,6 @@ function initLenis() {
                 closeMobileMenu();
             }
         });
-    });
-}
-
-// ============================================
-// Custom Cursor
-// ============================================
-function initCursor() {
-    cursor = document.getElementById('cursor');
-
-    if (!cursor || window.matchMedia('(hover: none)').matches) return;
-
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-    });
-
-    function animateCursor() {
-        cursorX += (mouseX - cursorX) * 0.15;
-        cursorY += (mouseY - cursorY) * 0.15;
-        cursor.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
-        requestAnimationFrame(animateCursor);
-    }
-
-    animateCursor();
-
-    // Hover effects
-    const hoverElements = document.querySelectorAll('a, button, .btn, .nav-link, .pricing-card, .floating-card');
-
-    hoverElements.forEach(el => {
-        el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
-        el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
     });
 }
 
@@ -449,16 +415,6 @@ function animateHeroEntrance() {
         stagger: 0.1
     }, '-=0.4');
 
-    // Floating cards
-    tl.from('.floating-card', {
-        opacity: 0,
-        y: 60,
-        scale: 0.8,
-        duration: 1,
-        stagger: 0.2,
-        ease: 'back.out(1.7)'
-    }, '-=0.6');
-
     // Background shapes
     tl.from('.shape', {
         opacity: 0,
@@ -487,32 +443,6 @@ function initHeroAnimations() {
             repeat: -1,
             yoyo: true,
             ease: 'sine.inOut'
-        });
-    });
-
-    // Floating cards 3D hover
-    const floatingCards = document.querySelectorAll('.floating-card');
-    floatingCards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
-
-            gsap.to(card, {
-                rotateY: x * 0.1,
-                rotateX: -y * 0.1,
-                duration: 0.4,
-                ease: 'power2.out'
-            });
-        });
-
-        card.addEventListener('mouseleave', () => {
-            gsap.to(card, {
-                rotateY: 0,
-                rotateX: 0,
-                duration: 0.4,
-                ease: 'power2.out'
-            });
         });
     });
 
@@ -904,20 +834,6 @@ function initParallaxEffects() {
             end: 'bottom top',
             scrub: true
         }
-    });
-
-    // Floating cards parallax
-    gsap.utils.toArray('.floating-card').forEach((card, i) => {
-        gsap.to(card, {
-            y: -80 - (i * 40),
-            ease: 'none',
-            scrollTrigger: {
-                trigger: '.hero',
-                start: 'top top',
-                end: 'bottom top',
-                scrub: true
-            }
-        });
     });
 
     // Shapes parallax
