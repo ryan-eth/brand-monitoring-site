@@ -23,7 +23,7 @@
     --color-danger: #ff4444;
 
     /* Typography */
-    --font-display: 'Space Grotesk', -apple-system, sans-serif;
+    --font-display: 'Canela', 'Georgia', 'Times New Roman', serif;
     --font-body: 'Inter', -apple-system, sans-serif;
     --font-mono: 'SF Mono', 'Monaco', monospace;
 
@@ -76,10 +76,12 @@ html.lenis, html.lenis body {
 
 body {
     font-family: var(--font-body);
+    font-weight: 400;
     background: var(--color-bg);
     color: var(--color-text);
-    line-height: 1.6;
+    line-height: 1.7;
     overflow-x: hidden;
+    letter-spacing: 0.01em;
 }
 
 a {
@@ -550,10 +552,10 @@ input, textarea {
 
 .hero-title {
     font-family: var(--font-display);
-    font-size: clamp(2.5rem, 7vw, 5.5rem);
-    font-weight: 700;
-    line-height: 1.05;
-    letter-spacing: -0.03em;
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
     margin-bottom: var(--space-lg);
 }
 
@@ -662,10 +664,10 @@ input, textarea {
 .stat-number {
     display: block;
     font-family: var(--font-display);
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 700;
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 300;
     line-height: 1;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
 }
 
 .stat-label {
@@ -834,9 +836,9 @@ input, textarea {
 
 .panel-title {
     font-family: var(--font-display);
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    font-weight: 700;
-    line-height: 1.1;
+    font-size: clamp(1.75rem, 3.5vw, 3rem);
+    font-weight: 300;
+    line-height: 1.15;
     margin-bottom: var(--space-lg);
 }
 
@@ -1168,8 +1170,9 @@ input, textarea {
 .contact-title {
     font-family: var(--font-display);
     font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 700;
+    font-weight: 300;
     line-height: 1.15;
+    letter-spacing: -0.01em;
 }
 
 .about-title {
@@ -1299,7 +1302,7 @@ input, textarea {
 .step-title {
     font-family: var(--font-display);
     font-size: 1.25rem;
-    font-weight: 600;
+    font-weight: 400;
     margin-bottom: 0.5rem;
 }
 
@@ -1334,9 +1337,10 @@ input, textarea {
 .testimonial-quote {
     font-family: var(--font-display);
     font-size: clamp(1.5rem, 3vw, 2.25rem);
-    font-weight: 500;
-    line-height: 1.4;
+    font-weight: 300;
+    line-height: 1.5;
     margin-bottom: var(--space-xl);
+    font-style: italic;
 }
 
 .testimonial-author {
@@ -1419,7 +1423,7 @@ input, textarea {
 .card-title {
     font-family: var(--font-display);
     font-size: 1.25rem;
-    font-weight: 600;
+    font-weight: 400;
     margin-bottom: var(--space-sm);
 }
 
@@ -1432,7 +1436,7 @@ input, textarea {
 .price-amount {
     font-family: var(--font-display);
     font-size: 2.5rem;
-    font-weight: 700;
+    font-weight: 300;
 }
 
 .price-period {
