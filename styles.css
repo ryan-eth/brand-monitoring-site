@@ -1180,53 +1180,6 @@ input, textarea {
 }
 
 /* ============================================
-   Testimonial Section
-   ============================================ */
-.testimonial {
-    padding: var(--space-4xl) var(--container-padding);
-    text-align: center;
-}
-
-.testimonial-content {
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.quote-mark {
-    font-family: var(--font-display);
-    font-size: 8rem;
-    font-weight: 700;
-    line-height: 0.5;
-    color: var(--color-accent);
-    opacity: 0.3;
-    margin-bottom: var(--space-lg);
-}
-
-.testimonial-quote {
-    font-family: var(--font-display);
-    font-size: clamp(1.5rem, 3vw, 2.25rem);
-    font-weight: 300;
-    line-height: 1.5;
-    margin-bottom: var(--space-xl);
-    font-style: italic;
-}
-
-.testimonial-author {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-}
-
-.author-name {
-    font-weight: 600;
-}
-
-.author-role {
-    font-size: 0.875rem;
-    color: var(--color-text-muted);
-}
-
-/* ============================================
    Pricing Section
    ============================================ */
 .pricing {
@@ -1239,9 +1192,108 @@ input, textarea {
 }
 
 .pricing-title {
-    margin-bottom: var(--space-4xl);
+    margin-bottom: var(--space-3xl);
 }
 
+/* Simple Pricing Layout */
+.pricing-simple {
+    max-width: 700px;
+    text-align: center;
+}
+
+.pricing-range {
+    margin-bottom: var(--space-3xl);
+}
+
+.range-label {
+    display: block;
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.range-amount {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-sm);
+}
+
+.range-from,
+.range-to {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 300;
+    color: var(--color-text);
+}
+
+.range-divider {
+    font-size: 2rem;
+    color: var(--color-text-muted);
+}
+
+.range-period {
+    font-size: 1.25rem;
+    color: var(--color-text-secondary);
+}
+
+.range-note {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+}
+
+.pricing-includes {
+    padding: var(--space-xl);
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    margin-bottom: var(--space-xl);
+    text-align: left;
+}
+
+.includes-title {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin-bottom: var(--space-lg);
+    text-align: center;
+}
+
+.includes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+}
+
+.includes-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+}
+
+.includes-check {
+    color: var(--color-accent);
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.pricing-cta {
+    text-align: center;
+}
+
+.cta-text {
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-lg);
+}
+
+/* Legacy pricing cards (keeping for potential future use) */
 .pricing-cards {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -1524,6 +1576,14 @@ input, textarea {
         grid-template-columns: 1fr;
         max-width: 500px;
         margin: 0 auto;
+    }
+
+    .includes-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .range-amount {
+        flex-wrap: wrap;
     }
 
     .founders {
