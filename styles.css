@@ -955,8 +955,6 @@ input, textarea {
     color: var(--color-text-secondary);
     line-height: 1.8;
     margin-bottom: var(--space-md);
-    opacity: 0;
-    transform: translateY(30px);
 }
 
 .story-text:last-child {
@@ -979,8 +977,6 @@ input, textarea {
 .founder {
     display: flex;
     gap: var(--space-md);
-    opacity: 0;
-    transform: translateY(30px);
 }
 
 .founder-image {
@@ -1099,8 +1095,6 @@ input, textarea {
     grid-template-columns: auto 1fr;
     gap: var(--space-lg);
     position: relative;
-    opacity: 0;
-    transform: translateX(-30px);
 }
 
 .step-number {
@@ -1209,9 +1203,7 @@ input, textarea {
     background: var(--color-bg-elevated);
     border: 1px solid var(--color-border);
     border-radius: 24px;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: transform 0.4s var(--ease-out-expo), border-color 0.3s;
+    transition: border-color 0.3s;
 }
 
 .pricing-card:hover {
@@ -1441,16 +1433,38 @@ input, textarea {
    Responsive Design
    ============================================ */
 @media (max-width: 1024px) {
+    .horizontal-wrapper {
+        height: auto;
+        overflow: visible;
+    }
+
+    .horizontal-track {
+        flex-direction: column;
+        transform: none !important;
+    }
+
     .horizontal-panel {
-        grid-template-columns: 1fr;
+        width: 100%;
+        height: auto;
+        min-height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         text-align: center;
+        padding: var(--space-3xl) var(--space-lg);
     }
 
     .panel-content {
         max-width: 100%;
+        padding: 0 var(--space-md);
     }
 
     .panel-visual {
+        display: none;
+    }
+
+    .horizontal-progress {
         display: none;
     }
 
