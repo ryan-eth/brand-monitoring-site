@@ -347,91 +347,11 @@ function initHeroCanvas() {
 // Hero Entrance Animation
 // ============================================
 function animateHeroEntrance() {
-    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-
-    // Navigation - simple fade
-    tl.from('.nav-logo, .nav-link, .nav-cta', {
-        opacity: 0,
-        duration: 0.6,
-        stagger: 0.05
-    });
-
-    // Eyebrow
-    tl.from('.hero-eyebrow', {
-        opacity: 0,
-        y: 20,
-        duration: 0.6
-    }, '-=0.3');
-
-    // Title lines - simple fade up, line by line
-    tl.from('.title-line', {
-        opacity: 0,
-        y: 40,
-        duration: 0.8,
-        stagger: 0.12
-    }, '-=0.3');
-
-    // Subtitle
-    tl.from('.hero-subtitle', {
-        opacity: 0,
-        y: 20,
-        duration: 0.6
-    }, '-=0.4');
-
-    // CTA buttons
-    tl.from('.hero-cta .btn', {
-        opacity: 0,
-        y: 20,
-        duration: 0.6,
-        stagger: 0.1
-    }, '-=0.3');
-
-    // Stats
-    tl.from('.hero-stats .stat', {
-        opacity: 0,
-        y: 20,
-        duration: 0.5,
-        stagger: 0.08
-    }, '-=0.3');
-
-    // Background shapes - subtle fade
-    tl.from('.shape', {
-        opacity: 0,
-        scale: 0.8,
-        duration: 1.2,
-        stagger: 0.15,
-        ease: 'power2.out'
-    }, '-=0.8');
-
-    // Scroll indicator
-    tl.from('.hero-scroll', {
-        opacity: 0,
-        duration: 0.5
-    }, '-=0.3');
+    // No entrance animation - content appears immediately like microsoft.ai
 }
 
 function initHeroAnimations() {
-    // Continuous floating for shapes
-    gsap.utils.toArray('.shape').forEach((shape, i) => {
-        gsap.to(shape, {
-            y: '+=30',
-            x: '+=15',
-            rotation: '+=5',
-            duration: 3 + i * 0.5,
-            repeat: -1,
-            yoyo: true,
-            ease: 'sine.inOut'
-        });
-    });
-
-    // Scroll line animation
-    gsap.to('.scroll-line', {
-        scaleY: 1,
-        duration: 1,
-        repeat: -1,
-        yoyo: true,
-        ease: 'power1.inOut'
-    });
+    // No continuous animations - static like microsoft.ai
 }
 
 // ============================================
@@ -564,282 +484,21 @@ function initHorizontalScroll() {
 // Scroll Animations
 // ============================================
 function initScrollAnimations() {
-    // About section
-    const aboutTitle = document.querySelector('.about-title');
-    if (aboutTitle) {
-        gsap.from(aboutTitle.querySelectorAll('.char'), {
-            opacity: 0,
-            y: 50,
-            rotateX: -60,
-            duration: 0.8,
-            stagger: 0.02,
-            ease: 'power3.out',
-            scrollTrigger: {
-                trigger: '.about',
-                start: 'top 70%'
-            }
-        });
-    }
-
-    // Story paragraphs
-    gsap.from('.story-text', {
-        opacity: 0,
-        y: 40,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: 'power3.out',
-        scrollTrigger: {
-            trigger: '.about-story',
-            start: 'top 75%'
-        }
-    });
-
-    // Founders
-    gsap.from('.founder', {
-        opacity: 0,
-        y: 50,
-        scale: 0.95,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: 'power3.out',
-        scrollTrigger: {
-            trigger: '.founders',
-            start: 'top 80%'
-        }
-    });
-
-    // Process section
-    const processTitle = document.querySelector('.process-title');
-    if (processTitle) {
-        gsap.from(processTitle.querySelectorAll('.char'), {
-            opacity: 0,
-            y: 50,
-            rotateX: -60,
-            duration: 0.8,
-            stagger: 0.02,
-            ease: 'power3.out',
-            scrollTrigger: {
-                trigger: '.process',
-                start: 'top 70%'
-            }
-        });
-    }
-
-    // Process steps
-    gsap.from('.process-step', {
-        opacity: 0,
-        y: 60,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: 'power3.out',
-        scrollTrigger: {
-            trigger: '.process-steps',
-            start: 'top 80%'
-        }
-    });
-
-    // Step numbers animation
-    gsap.from('.step-number', {
-        scale: 0,
-        rotation: -180,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: 'back.out(2)',
-        scrollTrigger: {
-            trigger: '.process-steps',
-            start: 'top 80%'
-        }
-    });
-
-    // Testimonial
-    const testimonialQuote = document.querySelector('.testimonial-quote');
-    if (testimonialQuote) {
-        gsap.from(testimonialQuote.querySelectorAll('.char'), {
-            opacity: 0,
-            y: 30,
-            duration: 0.6,
-            stagger: 0.01,
-            ease: 'power3.out',
-            scrollTrigger: {
-                trigger: '.testimonial',
-                start: 'top 70%'
-            }
-        });
-    }
-
-    gsap.from('.quote-mark', {
-        opacity: 0,
-        scale: 0.5,
-        duration: 0.8,
-        ease: 'back.out(2)',
-        scrollTrigger: {
-            trigger: '.testimonial',
-            start: 'top 70%'
-        }
-    });
-
-    gsap.from('.testimonial-author', {
-        opacity: 0,
-        y: 20,
-        duration: 0.6,
-        delay: 0.5,
-        scrollTrigger: {
-            trigger: '.testimonial',
-            start: 'top 70%'
-        }
-    });
-
-    // Pricing
-    const pricingTitle = document.querySelector('.pricing-title');
-    if (pricingTitle) {
-        gsap.from(pricingTitle.querySelectorAll('.char'), {
-            opacity: 0,
-            y: 50,
-            rotateX: -60,
-            duration: 0.8,
-            stagger: 0.02,
-            ease: 'power3.out',
-            scrollTrigger: {
-                trigger: '.pricing',
-                start: 'top 70%'
-            }
-        });
-    }
-
-    gsap.from('.pricing-card', {
-        opacity: 0,
-        y: 60,
-        scale: 0.95,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: 'back.out(1.5)',
-        scrollTrigger: {
-            trigger: '.pricing-cards',
-            start: 'top 80%'
-        }
-    });
-
-    // Contact
-    const contactTitle = document.querySelector('.contact-title');
-    if (contactTitle) {
-        gsap.from(contactTitle.querySelectorAll('.char'), {
-            opacity: 0,
-            y: 50,
-            rotateX: -60,
-            duration: 0.8,
-            stagger: 0.02,
-            ease: 'power3.out',
-            scrollTrigger: {
-                trigger: '.contact',
-                start: 'top 70%'
-            }
-        });
-    }
-
-    gsap.from('.contact-subtitle', {
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        scrollTrigger: {
-            trigger: '.contact',
-            start: 'top 65%'
-        }
-    });
-
-    gsap.from('.contact-form', {
-        opacity: 0,
-        y: 40,
-        duration: 0.8,
-        scrollTrigger: {
-            trigger: '.contact-form',
-            start: 'top 85%'
-        }
-    });
-
-    // Footer
-    gsap.from('.footer', {
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        ease: 'power3.out',
-        scrollTrigger: {
-            trigger: '.footer',
-            start: 'top 95%'
-        }
-    });
+    // No scroll animations - static like microsoft.ai
 }
 
 // ============================================
 // Magnetic Buttons
 // ============================================
 function initMagneticButtons() {
-    const magneticElements = document.querySelectorAll('[data-magnetic], .btn');
-
-    function animateMagnetic(el, x, y, duration, ease) {
-        gsap.to(el, { x, y, duration, ease });
-        const text = el.querySelector('.btn-text, span');
-        if (text) {
-            gsap.to(text, { x: x * 0.5, y: y * 0.5, duration, ease });
-        }
-    }
-
-    magneticElements.forEach(el => {
-        el.addEventListener('mousemove', (e) => {
-            const rect = el.getBoundingClientRect();
-            const x = (e.clientX - rect.left - rect.width / 2) * 0.3;
-            const y = (e.clientY - rect.top - rect.height / 2) * 0.3;
-            animateMagnetic(el, x, y, 0.3, 'power2.out');
-        });
-
-        el.addEventListener('mouseleave', () => {
-            animateMagnetic(el, 0, 0, 0.5, 'elastic.out(1, 0.5)');
-        });
-    });
+    // No magnetic effect - static like microsoft.ai
 }
 
 // ============================================
 // Parallax Effects
 // ============================================
 function initParallaxEffects() {
-    // Hero content parallax
-    gsap.to('.hero-content', {
-        y: 150,
-        opacity: 0,
-        ease: 'none',
-        scrollTrigger: {
-            trigger: '.hero',
-            start: 'top top',
-            end: 'bottom top',
-            scrub: true
-        }
-    });
-
-    // Shapes parallax
-    gsap.utils.toArray('.shape').forEach((shape, i) => {
-        gsap.to(shape, {
-            y: -150 * (0.5 + i * 0.2),
-            ease: 'none',
-            scrollTrigger: {
-                trigger: '.hero',
-                start: 'top top',
-                end: 'bottom top',
-                scrub: true
-            }
-        });
-    });
-
-    // Section tags reveal
-    gsap.utils.toArray('.section-tag').forEach(tag => {
-        gsap.from(tag, {
-            opacity: 0,
-            x: -30,
-            duration: 0.6,
-            scrollTrigger: {
-                trigger: tag,
-                start: 'top 85%'
-            }
-        });
-    });
+    // No parallax - static like microsoft.ai
 }
 
 // ============================================
@@ -987,32 +646,7 @@ function animateCounter(element, finalValue) {
 // Tilt Cards
 // ============================================
 function initTiltCards() {
-    const tiltCards = document.querySelectorAll('[data-tilt]');
-
-    tiltCards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const rotateX = (e.clientY - rect.top - rect.height / 2) / 10;
-            const rotateY = (rect.width / 2 - (e.clientX - rect.left)) / 10;
-
-            gsap.to(card, {
-                rotateX,
-                rotateY,
-                duration: 0.3,
-                ease: 'power2.out',
-                transformPerspective: 1000
-            });
-        });
-
-        card.addEventListener('mouseleave', () => {
-            gsap.to(card, {
-                rotateX: 0,
-                rotateY: 0,
-                duration: 0.5,
-                ease: 'power2.out'
-            });
-        });
-    });
+    // No tilt effect - static like microsoft.ai
 }
 
 // ============================================
@@ -1093,20 +727,7 @@ function initFormHandling() {
 // Reveal Animations
 // ============================================
 function initRevealAnimations() {
-    const reveals = document.querySelectorAll('[data-reveal]');
-
-    reveals.forEach(el => {
-        gsap.from(el, {
-            opacity: 0,
-            y: 40,
-            duration: 0.8,
-            ease: 'power3.out',
-            scrollTrigger: {
-                trigger: el,
-                start: 'top 85%'
-            }
-        });
-    });
+    // No reveal animations - static like microsoft.ai
 }
 
 // ============================================
