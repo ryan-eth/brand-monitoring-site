@@ -2376,42 +2376,76 @@ input, textarea {
 }
 
 /* ============================================
-   Contact Section
+   Contact Section - Minimal
    ============================================ */
-.contact {
+.contact-section {
     padding: var(--space-4xl) var(--container-padding);
-    background: var(--color-bg-elevated);
+    background: var(--color-bg);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.contact-content {
-    max-width: 700px;
+.contact-container {
+    max-width: var(--container-max);
     margin: 0 auto;
 }
 
-.contact-header {
-    text-align: center;
-    margin-bottom: var(--space-3xl);
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: clamp(3rem, 8vw, 8rem);
+    align-items: start;
 }
 
-.contact-title {
+.contact-info {
+    /* Left column info */
+}
+
+.contact-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-lg);
+}
+
+.contact-headline {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 300;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
     margin-bottom: var(--space-md);
 }
 
-.contact-subtitle {
-    font-size: 1.125rem;
+.contact-text {
+    font-size: 0.9375rem;
+    line-height: 1.7;
     color: var(--color-text-secondary);
+    margin-bottom: var(--space-lg);
+}
+
+.contact-email {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    transition: color 0.2s ease;
+}
+
+.contact-email:hover {
+    color: var(--color-text);
 }
 
 .contact-form {
     display: flex;
     flex-direction: column;
-    gap: var(--space-lg);
+    gap: var(--space-md);
 }
 
 .form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--space-lg);
+    gap: var(--space-md);
 }
 
 .form-group {
@@ -2420,39 +2454,65 @@ input, textarea {
 
 .form-group label {
     display: block;
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
     font-weight: 500;
-    color: var(--color-text-secondary);
+    color: var(--color-text-muted);
     margin-bottom: 0.5rem;
 }
 
 .form-group input,
 .form-group textarea {
     width: 100%;
-    padding: 1rem;
-    background: var(--color-bg);
-    border: 1px solid var(--color-border);
-    border-radius: 12px;
+    padding: 0.875rem 1rem;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
     color: var(--color-text);
-    transition: border-color 0.3s, box-shadow 0.3s;
+    font-size: 0.9375rem;
+    transition: border-color 0.2s ease;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: var(--color-accent);
-    box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
 .form-group textarea {
     resize: vertical;
-    min-height: 120px;
+    min-height: 100px;
+}
+
+.contact-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    background: var(--color-text);
+    color: var(--color-bg);
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    align-self: flex-start;
+}
+
+.contact-submit:hover {
+    opacity: 0.9;
+}
+
+.contact-submit-arrow {
+    transition: transform 0.2s ease;
+}
+
+.contact-submit:hover .contact-submit-arrow {
+    transform: translateX(3px);
 }
 
 .form-status {
-    margin-top: var(--space-md);
-    font-size: 0.9375rem;
-    text-align: center;
+    font-size: 0.875rem;
 }
 
 .form-status.success {
@@ -2463,138 +2523,115 @@ input, textarea {
     color: #ff6b6b;
 }
 
-/* ============================================
-   Pre-Footer CTA
-   ============================================ */
-.pre-footer {
-    padding: var(--space-4xl) var(--container-padding);
-    text-align: center;
-    background: linear-gradient(180deg, transparent 0%, rgba(0, 255, 136, 0.03) 100%);
-}
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-2xl);
+    }
 
-.pre-footer-content {
-    max-width: var(--container-max);
-    margin: 0 auto;
-}
+    .form-row {
+        grid-template-columns: 1fr;
+    }
 
-.pre-footer-title {
-    font-family: var(--font-display);
-    font-size: clamp(1.75rem, 4vw, 2.5rem);
-    font-weight: 400;
-    line-height: 1.3;
-    margin-bottom: var(--space-xl);
+    .contact-section {
+        padding: var(--space-3xl) var(--container-padding);
+    }
 }
 
 /* ============================================
-   Footer
+   Footer - Minimal
    ============================================ */
-.footer {
+.footer-minimal {
     padding: var(--space-3xl) var(--container-padding);
-    border-top: 1px solid var(--color-border);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
     background: var(--color-bg);
 }
 
-.footer-content {
+.footer-container {
     max-width: var(--container-max);
     margin: 0 auto;
 }
 
-.footer-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: var(--space-2xl);
+.footer-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
     margin-bottom: var(--space-2xl);
 }
 
-.footer-brand {
-    max-width: 300px;
+.footer-brand-minimal {
+    /* Left side */
 }
 
-.footer-logo {
+.footer-logo-minimal {
     font-family: var(--font-display);
-    font-size: 1.125rem;
+    font-size: 1rem;
+    font-weight: 500;
     letter-spacing: -0.02em;
     display: block;
-    margin-bottom: var(--space-sm);
+    margin-bottom: var(--space-xs);
 }
 
-.footer-tagline {
-    font-size: 0.9375rem;
-    color: var(--color-text-secondary);
-    line-height: 1.6;
-    margin-bottom: var(--space-md);
-}
-
-.footer-email {
+.footer-tagline-minimal {
     font-size: 0.875rem;
-    color: var(--color-accent);
-    transition: opacity 0.3s;
+    color: var(--color-text-muted);
+    max-width: 280px;
 }
 
-.footer-email:hover {
-    opacity: 0.8;
-}
-
-.footer-column {
+.footer-links {
     display: flex;
-    flex-direction: column;
+    gap: var(--space-lg);
 }
 
-.footer-heading {
-    font-family: var(--font-display);
+.footer-links a {
     font-size: 0.875rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--color-text);
-    margin-bottom: var(--space-md);
+    color: var(--color-text-muted);
+    transition: color 0.2s ease;
 }
 
-.footer-nav {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-sm);
-}
-
-.footer-nav li a,
-.footer-nav li span {
-    font-size: 0.9375rem;
-    color: var(--color-text-secondary);
-    transition: color 0.3s;
-}
-
-.footer-nav li a:hover {
+.footer-links a:hover {
     color: var(--color-text);
 }
 
-.footer-bottom {
+.footer-bottom-minimal {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: var(--space-xl);
-    border-top: 1px solid var(--color-border);
+    padding-top: var(--space-lg);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.copyright {
-    font-size: 0.875rem;
+.footer-copyright {
+    font-size: 0.8125rem;
     color: var(--color-text-muted);
 }
 
-.footer-legal {
-    font-size: 0.875rem;
+.footer-email-minimal {
+    font-size: 0.8125rem;
     color: var(--color-text-muted);
+    transition: color 0.2s ease;
 }
 
-.footer-social a {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--color-text-secondary);
-    transition: color 0.3s;
-}
-
-.footer-social a:hover {
+.footer-email-minimal:hover {
     color: var(--color-text);
+}
+
+@media (max-width: 768px) {
+    .footer-main {
+        flex-direction: column;
+        gap: var(--space-xl);
+    }
+
+    .footer-links {
+        flex-wrap: wrap;
+        gap: var(--space-md);
+    }
+
+    .footer-bottom-minimal {
+        flex-direction: column;
+        gap: var(--space-sm);
+        text-align: center;
+    }
 }
 
 /* ============================================
