@@ -1195,6 +1195,41 @@ input, textarea {
     transform: translateY(0);
 }
 
+/* Expanded Chapter Style (with multiple paragraphs) */
+.story-chapter--expanded .chapter-content {
+    max-width: 800px;
+}
+
+.chapter-details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+}
+
+.chapter-details .chapter-text {
+    max-width: 700px;
+    transition-delay: 0.5s;
+}
+
+.chapter-details .chapter-text:nth-child(2) {
+    transition-delay: 0.7s;
+}
+
+.chapter-details .chapter-text:nth-child(3) {
+    transition-delay: 0.9s;
+}
+
+.chapter-text--emphasis {
+    color: var(--color-text) !important;
+    font-weight: 500;
+    padding: var(--space-md) var(--space-lg);
+    background: rgba(0, 255, 136, 0.05);
+    border-left: 3px solid var(--color-accent);
+    border-radius: 0 8px 8px 0;
+    margin-top: var(--space-sm);
+}
+
 /* ============================================
    Split Layout Chapter (with visual)
    ============================================ */
