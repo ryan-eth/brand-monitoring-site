@@ -39,37 +39,11 @@ document.addEventListener('DOMContentLoaded', () => {
 // ============================================
 function initLoader() {
     const loader = document.getElementById('loader');
-    const words = document.querySelectorAll('.loader-word');
 
     if (!loader) {
-        // No loader, animate hero immediately
         animateHeroEntrance();
         return;
     }
-
-    // Animate loader words
-    gsap.fromTo(words,
-        { opacity: 0, y: 30 },
-        {
-            opacity: 1,
-            y: 0,
-            duration: 0.5,
-            stagger: 0.1,
-            ease: 'power3.out',
-            delay: 0.2
-        }
-    );
-
-    // Animate loader line
-    gsap.fromTo('.loader-line',
-        { scaleX: 0 },
-        {
-            scaleX: 1,
-            duration: 1,
-            delay: 0.5,
-            ease: 'power2.inOut'
-        }
-    );
 
     // Hide loader function
     function hideLoader() {
@@ -79,6 +53,7 @@ function initLoader() {
             ease: 'power2.inOut',
             onComplete: () => {
                 loader.style.display = 'none';
+                loader.classList.add('hidden');
                 animateHeroEntrance();
             }
         });
@@ -86,10 +61,10 @@ function initLoader() {
 
     // Check if page already loaded
     if (document.readyState === 'complete') {
-        setTimeout(hideLoader, 1200);
+        setTimeout(hideLoader, 1000);
     } else {
         window.addEventListener('load', () => {
-            setTimeout(hideLoader, 1200);
+            setTimeout(hideLoader, 1000);
         });
     }
 
@@ -590,70 +565,50 @@ function initFormHandling() {
     const form = document.getElementById('contact-form');
     if (!form) return;
 
-    // Input animations
-    const inputs = form.querySelectorAll('input, textarea');
-    inputs.forEach(input => {
-        const line = input.nextElementSibling;
-
-        input.addEventListener('focus', () => {
-            if (line && line.classList.contains('input-line')) {
-                gsap.to(line, { scaleX: 1, duration: 0.4, ease: 'power2.out' });
-            }
-        });
-
-        input.addEventListener('blur', () => {
-            if (line && line.classList.contains('input-line') && !input.value) {
-                gsap.to(line, { scaleX: 0, duration: 0.4, ease: 'power2.out' });
-            }
-        });
-    });
+    const statusEl = document.getElementById('form-status');
 
     // Form submission
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        const button = form.querySelector('button[type="submit"]');
-        const btnText = button.querySelector('.btn-text');
-        const originalText = btnText.textContent;
-
-        gsap.to(button, {
-            scale: 0.95,
-            duration: 0.1,
-            yoyo: true,
-            repeat: 1
-        });
+        const button = document.getElementById('submit-btn');
+        const buttonText = button.querySelector('span:first-child');
+        const originalText = buttonText.textContent;
 
         button.disabled = true;
-        btnText.textContent = 'Sending...';
+        buttonText.textContent = 'Sending...';
 
-        setTimeout(() => {
-            btnText.textContent = 'Sent!';
-            gsap.to(button, {
-                background: 'var(--color-accent)',
-                duration: 0.3
+        try {
+            const formData = new FormData(form);
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
             });
 
-            gsap.from(button, {
-                scale: 1.05,
-                duration: 0.4,
-                ease: 'back.out(2)'
-            });
-
-            setTimeout(() => {
-                btnText.textContent = originalText;
-                gsap.to(button, {
-                    background: '',
-                    duration: 0.3
-                });
-                button.disabled = false;
+            if (response.ok) {
+                buttonText.textContent = 'Sent!';
+                if (statusEl) {
+                    statusEl.textContent = "Thanks! We'll get back to you within 24 hours.";
+                    statusEl.className = 'form-status success';
+                }
                 form.reset();
 
-                // Reset input lines
-                form.querySelectorAll('.input-line').forEach(line => {
-                    gsap.to(line, { scaleX: 0, duration: 0.3 });
-                });
-            }, 2500);
-        }, 1500);
+                setTimeout(() => {
+                    buttonText.textContent = originalText;
+                    button.disabled = false;
+                }, 3000);
+            } else {
+                throw new Error('Form submission failed');
+            }
+        } catch (error) {
+            buttonText.textContent = originalText;
+            button.disabled = false;
+            if (statusEl) {
+                statusEl.textContent = 'Something went wrong. Please email us directly.';
+                statusEl.className = 'form-status error';
+            }
+        }
     });
 }
 
