@@ -248,12 +248,60 @@ input, textarea {
     font-weight: 300;
 }
 
+/* Nav CTA Button */
+.nav-cta {
+    display: none;
+    padding: 0.625rem 1rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    background: var(--color-text);
+    color: var(--color-bg);
+    border-radius: 6px;
+    transition: opacity 0.2s ease;
+}
+
+.nav-cta:hover {
+    opacity: 0.9;
+}
+
 .nav-toggle {
     display: none;
     flex-direction: column;
     gap: 6px;
     width: 28px;
     padding: 4px 0;
+}
+
+/* Floating Action Button */
+.fab {
+    display: none;
+    position: fixed;
+    bottom: 24px;
+    right: 20px;
+    z-index: var(--z-nav);
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.25rem;
+    background: var(--color-text);
+    color: var(--color-bg);
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.fab:active {
+    transform: scale(0.96);
+}
+
+.fab svg {
+    width: 20px;
+    height: 20px;
+}
+
+.fab-text {
+    display: inline;
 }
 
 .nav-toggle span {
@@ -596,24 +644,74 @@ input, textarea {
 @media (max-width: 900px) {
     .hero {
         padding-top: 80px;
+        min-height: auto;
+        padding-bottom: var(--space-xl);
     }
 
     .hero-main {
         grid-template-columns: 1fr;
-        gap: var(--space-xl);
+        gap: var(--space-lg);
         align-items: start;
+        padding-bottom: var(--space-md);
+    }
+
+    .hero-headline {
+        order: 1;
     }
 
     .hero-copy {
-        order: -1;
+        order: 2;
     }
 
     .hero-title {
-        font-size: clamp(2.5rem, 10vw, 3.5rem);
+        font-size: clamp(2.25rem, 9vw, 3rem);
     }
 
     .hero-description {
         max-width: 100%;
+    }
+
+    .hero-signals {
+        max-width: 100%;
+    }
+
+    .hero-bottom {
+        padding: var(--space-md) 0 var(--space-lg);
+    }
+
+    .hero-cta {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .hero-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    .hero-btn--ghost {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 1rem 1.5rem;
+        color: var(--color-text-secondary);
+    }
+
+    .hero-btn--ghost:hover {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(255, 255, 255, 0.15);
+    }
+}
+
+/* Disable heavy animations on mobile */
+@media (max-width: 768px) {
+    #hero-canvas {
+        display: none;
+    }
+
+    .shape {
+        animation: none;
     }
 }
 
@@ -1162,6 +1260,20 @@ input, textarea {
     gap: var(--space-2xl) clamp(3rem, 8vw, 8rem);
 }
 
+/* Question Header (for accordion) */
+.question-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-md);
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: default;
+}
+
 .question-title {
     font-family: var(--font-display);
     font-size: clamp(1.125rem, 2vw, 1.375rem);
@@ -1169,6 +1281,14 @@ input, textarea {
     line-height: 1.3;
     color: var(--color-text);
     margin-bottom: var(--space-sm);
+}
+
+.question-icon {
+    display: none;
+}
+
+.question-body {
+    /* Visible by default on desktop */
 }
 
 .question-answer {
@@ -1180,11 +1300,82 @@ input, textarea {
 @media (max-width: 768px) {
     .questions-list {
         grid-template-columns: 1fr;
-        gap: var(--space-xl);
+        gap: 0;
     }
 
     .questions-section {
         padding: var(--space-3xl) var(--container-padding);
+    }
+
+    .question-item {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .question-item:first-child {
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .question-header {
+        cursor: pointer;
+        padding: var(--space-lg) 0;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .question-title {
+        margin-bottom: 0;
+        font-size: 1rem;
+    }
+
+    .question-icon {
+        display: block;
+        flex-shrink: 0;
+        width: 24px;
+        height: 24px;
+        position: relative;
+    }
+
+    .question-icon::before,
+    .question-icon::after {
+        content: '';
+        position: absolute;
+        background: var(--color-text-muted);
+        transition: transform 0.3s ease;
+    }
+
+    .question-icon::before {
+        width: 12px;
+        height: 2px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .question-icon::after {
+        width: 2px;
+        height: 12px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .question-item.open .question-icon::after {
+        transform: translate(-50%, -50%) rotate(90deg);
+        opacity: 0;
+    }
+
+    .question-body {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .question-item.open .question-body {
+        max-height: 200px;
+        padding-bottom: var(--space-lg);
+    }
+
+    .question-answer {
+        font-size: 0.875rem;
     }
 }
 
@@ -1446,21 +1637,41 @@ input, textarea {
 
     .footer-bottom-minimal {
         flex-direction: column;
-        gap: var(--space-sm);
+        gap: var(--space-md);
         text-align: center;
     }
 
     .footer-bottom-links {
-        flex-direction: column;
-        gap: var(--space-xs);
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--space-md);
+    }
+
+    .footer-legal-link,
+    .footer-email-minimal {
+        padding: 0.5rem;
     }
 
     .nav-toggle {
         display: flex;
     }
 
-    .hero-cta {
-        flex-direction: column;
+    .nav-cta {
+        display: block;
+        margin-right: auto;
+        margin-left: var(--space-md);
+    }
+
+    .fab {
+        display: flex;
+    }
+
+    /* Hide FAB when near contact section */
+    .fab.hidden {
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(20px);
     }
 }
 

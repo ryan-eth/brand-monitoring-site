@@ -32,6 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initFormHandling();
     initRevealAnimations();
     initStoryScroll();
+    initAccordion();
+    initFAB();
 });
 
 // ============================================
@@ -191,13 +193,6 @@ function initNavigation() {
 
             if (mobileMenu.classList.contains('active')) {
                 lenis.stop();
-                gsap.from('.mobile-link', {
-                    opacity: 0,
-                    y: 30,
-                    duration: 0.5,
-                    stagger: 0.1,
-                    ease: 'power3.out'
-                });
             } else {
                 lenis.start();
             }
@@ -771,6 +766,59 @@ window.addEventListener('beforeunload', () => {
     if (lenis) lenis.destroy();
     ScrollTrigger.getAll().forEach(trigger => trigger.kill());
 });
+
+// ============================================
+// Mobile Accordion (FAQ)
+// ============================================
+function initAccordion() {
+    const accordionItems = document.querySelectorAll('[data-accordion]');
+
+    accordionItems.forEach(item => {
+        const header = item.querySelector('.question-header');
+        if (!header) return;
+
+        header.addEventListener('click', () => {
+            // Check if we're on mobile
+            if (window.innerWidth > 768) return;
+
+            const isOpen = item.classList.contains('open');
+
+            // Close all other items
+            accordionItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('open');
+                    const otherHeader = otherItem.querySelector('.question-header');
+                    if (otherHeader) otherHeader.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Toggle current item
+            item.classList.toggle('open');
+            header.setAttribute('aria-expanded', !isOpen);
+        });
+    });
+}
+
+// ============================================
+// Floating Action Button
+// ============================================
+function initFAB() {
+    const fab = document.getElementById('fab');
+    const contactSection = document.getElementById('contact');
+
+    if (!fab || !contactSection) return;
+
+    // Hide FAB when contact section is visible
+    ScrollTrigger.create({
+        trigger: contactSection,
+        start: 'top 80%',
+        end: 'bottom top',
+        onEnter: () => fab.classList.add('hidden'),
+        onLeave: () => fab.classList.remove('hidden'),
+        onEnterBack: () => fab.classList.add('hidden'),
+        onLeaveBack: () => fab.classList.remove('hidden')
+    });
+}
 
 // ============================================
 // Console Branding

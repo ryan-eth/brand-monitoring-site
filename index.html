@@ -53,12 +53,21 @@
             <a href="index.html" class="nav-logo" data-magnetic>
                 <span class="logo-text"><span class="logo-bold">BRAND</span><span class="logo-light">MONITORING</span><span class="logo-bold">GUYS</span></span>
             </a>
+            <a href="#contact" class="nav-cta">Get help</a>
             <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
             </button>
         </nav>
     </header>
+
+    <!-- Floating Action Button for Mobile -->
+    <a href="#contact" class="fab" id="fab" aria-label="Get help now">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        <span class="fab-text">Get help</span>
+    </a>
 
     <div class="mobile-menu" id="mobile-menu">
         <nav class="mobile-nav">
@@ -275,34 +284,64 @@
                 </div>
 
                 <div class="questions-list">
-                    <div class="question-item">
-                        <h3 class="question-title">What if you take down something that's actually ours?</h3>
-                        <p class="question-answer">We verify everything with you first. Partners, resellers, affiliates, campaigns&mdash;we confirm before we act. No friendly fire.</p>
+                    <div class="question-item" data-accordion>
+                        <button class="question-header" aria-expanded="false">
+                            <h3 class="question-title">What if you take down something that's actually ours?</h3>
+                            <span class="question-icon"></span>
+                        </button>
+                        <div class="question-body">
+                            <p class="question-answer">We verify everything with you first. Partners, resellers, affiliates, campaigns&mdash;we confirm before we act. No friendly fire.</p>
+                        </div>
                     </div>
 
-                    <div class="question-item">
-                        <h3 class="question-title">How do I know you're actually doing anything?</h3>
-                        <p class="question-answer">Weekly reports. Every threat found, every action taken, every outcome. You see the work, not just a dashboard.</p>
+                    <div class="question-item" data-accordion>
+                        <button class="question-header" aria-expanded="false">
+                            <h3 class="question-title">How do I know you're actually doing anything?</h3>
+                            <span class="question-icon"></span>
+                        </button>
+                        <div class="question-body">
+                            <p class="question-answer">Weekly reports. Every threat found, every action taken, every outcome. You see the work, not just a dashboard.</p>
+                        </div>
                     </div>
 
-                    <div class="question-item">
-                        <h3 class="question-title">Why wouldn't I just use a platform?</h3>
-                        <p class="question-answer">You could. You'd also be the one monitoring it, triaging alerts, figuring out escalation paths, and following up. We do that part.</p>
+                    <div class="question-item" data-accordion>
+                        <button class="question-header" aria-expanded="false">
+                            <h3 class="question-title">Why wouldn't I just use a platform?</h3>
+                            <span class="question-icon"></span>
+                        </button>
+                        <div class="question-body">
+                            <p class="question-answer">You could. You'd also be the one monitoring it, triaging alerts, figuring out escalation paths, and following up. We do that part.</p>
+                        </div>
                     </div>
 
-                    <div class="question-item">
-                        <h3 class="question-title">We're not that big. Is this overkill?</h3>
-                        <p class="question-answer">Scammers don't check your revenue before cloning your checkout page. If customers can find you, so can impersonators.</p>
+                    <div class="question-item" data-accordion>
+                        <button class="question-header" aria-expanded="false">
+                            <h3 class="question-title">We're not that big. Is this overkill?</h3>
+                            <span class="question-icon"></span>
+                        </button>
+                        <div class="question-body">
+                            <p class="question-answer">Scammers don't check your revenue before cloning your checkout page. If customers can find you, so can impersonators.</p>
+                        </div>
                     </div>
 
-                    <div class="question-item">
-                        <h3 class="question-title">What if something can't be taken down?</h3>
-                        <p class="question-answer">We document exactly why, what we tried, and what customer harm remains. You'll never wonder what happened.</p>
+                    <div class="question-item" data-accordion>
+                        <button class="question-header" aria-expanded="false">
+                            <h3 class="question-title">What if something can't be taken down?</h3>
+                            <span class="question-icon"></span>
+                        </button>
+                        <div class="question-body">
+                            <p class="question-answer">We document exactly why, what we tried, and what customer harm remains. You'll never wonder what happened.</p>
+                        </div>
                     </div>
 
-                    <div class="question-item">
-                        <h3 class="question-title">Can't our legal team handle this?</h3>
-                        <p class="question-answer">They can send cease and desists. We execute against platform enforcement mechanisms&mdash;faster, no legal fees, no court.</p>
+                    <div class="question-item" data-accordion>
+                        <button class="question-header" aria-expanded="false">
+                            <h3 class="question-title">Can't our legal team handle this?</h3>
+                            <span class="question-icon"></span>
+                        </button>
+                        <div class="question-body">
+                            <p class="question-answer">They can send cease and desists. We execute against platform enforcement mechanisms&mdash;faster, no legal fees, no court.</p>
+                        </div>
                     </div>
                 </div>
             </div>
