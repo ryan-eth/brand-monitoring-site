@@ -1,5 +1,5 @@
 /**
- * Brand Monitoring Guys - Award-Winning Interactive Experience
+ * Mirret - Award-Winning Interactive Experience
  * GSAP + Lenis + Splitting.js + WebGL Particles
  */
 
@@ -823,6 +823,6 @@ function initFAB() {
 // ============================================
 // Console Branding
 // ============================================
-console.log('%c Brand Monitoring Guys ', 'background: #00ff88; color: #0a0a0a; font-size: 20px; padding: 12px 24px; border-radius: 8px; font-weight: bold;');
+console.log('%c Mirret ', 'background: #00ff88; color: #0a0a0a; font-size: 20px; padding: 12px 24px; border-radius: 8px; font-weight: bold;');
 console.log('%c We hunt down brand impersonators. ', 'color: #666; font-size: 14px; padding: 8px 0;');
-console.log('%c brandmonitoringguys.com ', 'color: #00ff88; font-size: 12px;');
+console.log('%c mirret.co.uk ', 'color: #00ff88; font-size: 12px;');

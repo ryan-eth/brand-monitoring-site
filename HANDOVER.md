@@ -1,8 +1,8 @@
-# Brand Monitoring Guys - Project Handover Document
+# Mirret - Project Handover Document
 
 ## Project Overview
 
-**Brand Monitoring Guys (BMG)** is a premium, award-winning level landing page for a **productized service** (NOT a SaaS) run by **two engineers named Ryan and Mike**. The service helps brands identify and eliminate impersonators, fake websites, phishing sites, and social media clones.
+**Mirret** is a premium, award-winning level landing page for a **productized service** (NOT a SaaS) run by **two engineers named Ryan and Mike**. The service helps brands identify and eliminate impersonators, fake websites, phishing sites, and social media clones.
 
 ### Key Business Context
 - **Service Type**: Productized service, not software/SaaS
@@ -174,7 +174,7 @@ brand-monitoring-site/
 
 ### 11. Footer
 - Logo + tagline
-- Email: hello@brandmonitoringguys.com
+- Email: hello@mirret.co.uk
 - Social links: X (Twitter), LinkedIn
 - Copyright 2026
 
@@ -342,7 +342,7 @@ python3 -m http.server 8080
 ### Content to Replace
 1. **Founder photos**: Currently using initial placeholders (R, M)
 2. **Testimonial**: May need real client quote
-3. **Email**: hello@brandmonitoringguys.com (verify this exists)
+3. **Email**: hello@mirret.co.uk (verify this exists)
 4. **Social links**: Currently placeholder `href="#"`
 
 ---
